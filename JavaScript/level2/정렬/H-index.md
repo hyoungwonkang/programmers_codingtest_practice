@@ -28,24 +28,24 @@ citations return
 
 # 코드
 
-function solution(citations) {
+    function solution(citations) {
 
-    citations.sort((a,b)=>(b-a))
-    const len = citations.length
-    const arr = Array.from({ length: len }, (v, i) => i + 1);
+        citations.sort((a,b)=>(b-a))
+        const len = citations.length
+        const arr = Array.from({ length: len }, (v, i) => i + 1);
 
-    for ( let i=0; i<len; i++){
-        if(citations[i] < arr[i]){
-            if(i===0) return 0
-            return arr[i-1];
-            break;
+        for ( let i=0; i<len; i++){
+            if(citations[i] < arr[i]){
+                if(i===0) return 0
+                return arr[i-1];
+                break;
+            }
+            if(citations[len-1] >= arr[len-1]){
+                return arr[len-1]
+            }
         }
-        if(citations[len-1] >= arr[len-1]){
-            return arr[len-1]
-        }
+
     }
-
-}
 
 ```js
 
