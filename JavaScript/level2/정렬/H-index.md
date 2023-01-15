@@ -29,9 +29,9 @@ citations return
 # 코드
 
 function solution(citations) {
-citations.sort((a,b)=>(b-a))
-const len = citations.length
-const arr = Array.from({ length: len }, (v, i) => i + 1);
+    citations.sort((a,b)=>(b-a))
+    const len = citations.length
+    const arr = Array.from({ length: len }, (v, i) => i + 1);
 
     for ( let i=0; i<len; i++){
         if(citations[i] < arr[i]){
@@ -43,7 +43,6 @@ const arr = Array.from({ length: len }, (v, i) => i + 1);
             return arr[len-1]
         }
     }
-
 }
 
 ```js
