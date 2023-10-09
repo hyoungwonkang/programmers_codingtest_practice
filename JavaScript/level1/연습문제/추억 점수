@@ -1,41 +1,51 @@
-function solution(name, yearning, photo) {
-    // name과 yearning 합친 배열 combined
-    const combined = []
-    for(let i= 0; i<name.length; i++){
-        combined.push(name[i]+':'+yearning[i])
-    }
 
-    const result=[];
-    for (let j=0; j<photo.length; j++){
-        let resultYearning =0;
-        for (let o=0; o<photo[j].length; o++){
-            for (let i=0; i<combined.length; i++){
-                if(combined[i].split(':')[0] === photo[j][o] ){
-                    resultYearning+=Number(combined[i].split(':')[1])
+# 풀이
+
+1. for문 사용
+
+# 코드
+    function solution(name, yearning, photo) {
+        // name과 yearning 합친 배열 combined
+        const combined = []
+        for(let i= 0; i<name.length; i++){
+            combined.push(name[i]+':'+yearning[i])
+        }
+
+        const result=[];
+        for (let j=0; j<photo.length; j++){
+            let resultYearning =0;
+            for (let o=0; o<photo[j].length; o++){
+                for (let i=0; i<combined.length; i++){
+                    if(combined[i].split(':')[0] === photo[j][o] ){
+                        resultYearning+=Number(combined[i].split(':')[1])
+                    }
                 }
             }
+            result.push(resultYearning)
         }
-        result.push(resultYearning)
+        return result;
     }
-    return result;
-}
 
-//다른 사람 풀이 1.
-function solution(name, yearning, photo) {
-    let answer = [];
+    //다른 사람 풀이 1.
+    function solution(name, yearning, photo) {
+        let answer = [];
 
-    for(let i=0;i<photo.length;i++){
-        let score = 0;
-        for(let j=0;j<photo[i].length;j++){
-            let idx = name.indexOf(photo[i][j]);
-            if(idx > -1)  score += yearning[idx];
+        for(let i=0;i<photo.length;i++){
+            let score = 0;
+            for(let j=0;j<photo[i].length;j++){
+                let idx = name.indexOf(photo[i][j]);
+                if(idx > -1)  score += yearning[idx];
+            }
+            answer.push(score);
         }
-        answer.push(score);
+        return answer;
     }
-    return answer;
-}
 
-//다른 사람 풀이 2.
-function solution(name, yearning, photo) {
-    return photo.map((v)=> v.reduce((a, c)=> a += yearning[name.indexOf(c)] ?? 0, 0))
-}
+    //다른 사람 풀이 2.
+    function solution(name, yearning, photo) {
+        return photo.map((v)=> v.reduce((a, c)=> a += yearning[name.indexOf(c)] ?? 0, 0))
+    }
+
+```js
+
+```
